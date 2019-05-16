@@ -15,165 +15,172 @@
 			box-sizing: border-box;
 		}
 
-	
-
-
-			
-
-			.card{
-				height: 340px;
-				width: 232px;
-				margin-left: 20px;
-				margin-top: 50px
-
-			}
-			#dragList #sort1 li{
-				list-style-type: none;
-				margin-top: 10px;
-			}
-
-#right{
-float: right;
-margin-right: 20px;
-}
-
-		</style>
-
-	</head>
-	<body>
-
-<div class="containerf" >
 
 
 
-	<div id="right">
+
+
+		.card{
+			height: 340px;
+			width: 232px;
+			margin-left: 20px;
+			margin-top: 50px
+
+		}
+		#dragList #sort1 li{
+			list-style-type: none;
+			margin-top: 10px;
+		}
+
+		.list{
+			margin-left: 5px;
+		}
+
+
+		#right{
+			float: right;
+			margin-right: 20px;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div class="containerf" >
+
+
+
+		<div id="right">
+
+			<div id="dropdiv">
+				<table  border="3 " class="table" >
+
+					<thead >
+
+						<tr style=" max-width:100%" >
+							<th>Day/shift</th>
+
+							<th id="shift1">7:15-8:45</th>
+							<th id="shift2">8:45-9:30</th>
+							<th id="shift3">9:30-10:15</th>
+							<th id="shift4">11:00-11:45</th>
+							<th id="shift5">11:45-12:30</th>
+							<th id="shift6">12:30-13:15</th>
+							<th id="shift7">1:15-14:00</th>
+						</tr>
+					</thead>
+
+
+					<tbody id="body">
+
+
+						<tr id="con1" class="sortConn" > 
+
+							<td id="row">Sunday</td>  
+
+							<td class="span"><span class="ui-state-default " id="1"></span></td>
+
+							<td class="span"><span class="ui-state-default" id="2"></span></td>
+							<td class="span"><span class="ui-state-default" id="3"></span> </td>
+							<td class="span"><span class="ui-state-default"  id="4"></span></td>
+							<td class="span"><span class="ui-state-default" id="5"></span></td>
+							<td class="span"><span class="ui-state-default" id="6"></span></td>
+							<td class="span"><span class="ui-state-default" id="7"></span></td>
+
+						</tr>
+
+
+
+
+						<tr id="con2" class="sortConn">
+							<td id="row">Monday</td>  
+
+
+							<td class="span"><span class="ui-state-default " id="8"></span></td>
+
+							<td class="span"><span class="ui-state-default" id="9"></span></td>
+							<td class="span"><span class="ui-state-default" id="10"></span></td>
+							<td class="span"><span class="ui-state-default"  id="11"></span></td>
+							<td class="span"><span class="ui-state-default" id="12"></span></td>
+							<td class="span"><span class="ui-state-default" id="13"></span></td>
+							<td class="span"><span class="ui-state-default" id="14"></span></td>
+
+						</tr>
+
+
+
+						<tr  id="con3" class="sortConn">
+							<td id="row">Tuesday</td>  
+							<td class="span"><span class="ui-state-default " id="8" ></span></td>
+
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8" ></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+
+						</tr>
+
+						<tr  id="con4" class="sortConn">
+							<td id="row">Wednesday</td>  
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8" ></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+
+						</tr>
+
+						<tr  id="con5" class="sortConn">
+
+							<td id="row">Thrusday</td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+
+						</tr>
+
+						<tr  id="con6" class="sortConn">
+							<td id="row">Friday</td>  
+
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+							<td class="span"><span class="ui-state-default" id="8"></span></td>
+
+						</tr>
+					</tbody>
 					
-<div id="dropdiv">
-					<table  border="3 " class="table" >
 
-						<thead >
-							
-							<tr style=" max-width:100%" >
-								<th>Day/shift</th>
+				</table>
+			</div>
+		</div>
 
-								<th id="shift1">7:15-8:45</th>
-								<th id="shift2">8:45-9:30</th>
-								<th id="shift3">9:30-10:15</th>
-								<th id="shift4">11:00-11:45</th>
-								<th id="shift5">11:45-12:30</th>
-								<th id="shift6">12:30-13:15</th>
-								<th id="shift7">1:15-14:00</th>
-							</tr>
-						</thead>
-
-
-						<tbody id="body">
-
-
-							<tr id="con1" class="sortConn" > 
-
-								<td id="row">Sunday</td>  
-
-								<td class="span"><span class="ui-state-default " id="1"></span></td>
-
-								<td class="span"><span class="ui-state-default" id="2"></span></td>
-								<td class="span"><span class="ui-state-default" id="3"></span> </td>
-								<td class="span"><span class="ui-state-default"  id="4"></span></td>
-								<td class="span"><span class="ui-state-default" id="5"></span></td>
-								<td class="span"><span class="ui-state-default" id="6"></span></td>
-								<td class="span"><span class="ui-state-default" id="7"></span></td>
-
-							</tr>
-
-
-
-
-							<tr id="con2" class="sortConn">
-								<td id="row">Monday</td>  
-								
-
-								<td class="span"><span class="ui-state-default col"></span></td>
-
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"  ></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-
-							</tr>
-
-
-
-							<tr  id="con3" class="sortConn">
-								<td id="row">Tuesday</td>  
-								<td class="span"><span class="ui-state-default col"></span></td>
-
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"  ></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-
-							</tr>
-
-							<tr  id="con4" class="sortConn">
-								<td id="row">Wednesday</td>  
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"  ></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-
-							</tr>
-
-							<tr  id="con5" class="sortConn">
-								
-								<td id="row">Thrusday</td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-
-							</tr>
-
-							<tr  id="con6" class="sortConn">
-								<td id="row">Friday</td>  
-
-								<td class="span"><span class="ui-state-default" ></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-								<td class="span"><span class="ui-state-default"></span></td>
-
-							</tr>
-						</tbody>
-					
-
-					</table>
-				</div>
-				</div>
-	<div id="dragList">
-				<div id="origin" class="card" >
-					<ul id="sort1" class="list">
-						<li id="one" title="one" class="draggable">English</li>
-						<li id="two" title="two" class="draggable">Nepali</li>
-						<li id="three" title="three" class="draggable">Economics</li>
-					</ul>
-				</div>
-</div>
+		<div id="dragList">
+			<div id="origin" class="card" >
+				<ul id="sort1" class="list">
+					<li id="one" title="one" class="draggable1" draggable="true">English</li>
+					<li id="two" title="two" class="draggable2" draggable="true">Nepali</li>
+					<li id="three" title="three" class="draggable3" draggable="true">Economics</li>
+					<li><button class="btn btn-lg btn-outline-primary " droppable="true" >Trash</button></li>
+				</ul>
+			</div>
+		</div>
 		
 
 
-		</div>
+	</div>
 
 
 
@@ -182,242 +189,141 @@ margin-right: 20px;
 
 
 
-			<!-- s<script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.8/draggable.js"></script> -->
-			<script
-			src="https://code.jquery.com/jquery-3.4.0.min.js"
-			integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-			crossorigin="anonymous"></script>
+	<!-- s<script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.8/draggable.js"></script> -->
+	<script
+	src="https://code.jquery.com/jquery-3.4.0.min.js"
+	integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+	crossorigin="anonymous"></script>
 
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
-			
 
-			<script type="text/javascript">
-				$(document).ready(function(){
-					console.log('hjshd');
 
-var $listItem=$('#sort1');
-  $( "li", $listItem ).draggable({
- 
+	<script type="text/javascript">
+		$(document).ready(function(){
+			console.log('ready');
+
+			var $listItem=$('#sort1 li');
+
+
+
+			$(  $listItem ).draggable({
+				cancel: "a.ui-icon",
       revert: "invalid", // when not dropped, the item will revert back to its initial position
       containment: "document",
       helper: "clone",
       cursor: "move",
-         appendTo: "body",
+      appendTo: "body",
+      refreshPositions: true
 
-    });
- 
-		// 			$( "#sort1" ).sortable({
-						
-                     
-		// 				helper:"clone",
 
-		// 				opacity:0.5,
-		// 				cursor:"crosshair",
-		// 				connectWith: "#right"
+  });
 
-  //     // receive: function( event, ui ){ //this will prevent move than 3 items in droppable list
 
-  //     // 	if($(ui.sender).attr('id')==='sort1' ){
-  //     // 		$(ui.sender).droppable('');
-  //     // 	}
-  //     // }
-  // });
- 
-    $( "#sort1" ).selectable();
-$( "#sort1" ).disableSelection();
- 
- initDroppable($("#dropdiv table td "));
-            function initDroppable($elements) {
-                $elements.droppable({
-                    activeClass: "ui-state-default",
-                    hoverClass: "ui-drop-hover",
-                    accept: ":not(.ui-sortable-helper)",
- 
-                    over: function (event, ui) {
-                        var $this = $(this);
-                    },
-                    drop: function (event, ui) {
-                        var $this = $(this);
-                        $("<span></span>").text(ui.draggable.text()).appendTo(this);
-                        // $("#sort1").find(":contains('" + ui.draggable.text() + "')")[0].remove();
-                          // $(ui.draggable).clone().appendTo($(this));
-                             console.log($(this).attr('class'));
+
+			$( "#sort1" ).selectable();
+			$( "#sort1" ).disableSelection();
+
+
+			initDroppable($("#dropdiv table td  "));
+
+			function initDroppable($elements) {
+				$elements.droppable({
+					activeClass: "ui-state-default",
+					hoverClass: "ui-drop-hover",
+                    accept: ":not(.ui-sortable-helper)", 
+
+                     over: function (event, ui) {
+ 	             var $this = $(this);
+console.log($this)
+ },
+                   drop:function (event, ui) {
+ 	               var $this = $(this);
+                 console.log(ui.position)
+
+
+                        var $item = ui.helper.clone();
+                        $item.draggable({
+                        	cancel: "a.ui-icon",
+                 revert: 'invalid',
+                cursor: "move",
+                revertDuration:0,
+                helper:"clone"
+
+
+            });
+
+
+                        $(this).addClass('has-drop').append($item);
+                    
 
                     }
-                });
-            }
 
-				});
+   
 
 
 
-// var getPosition = function(e, ui) {
 
-// 	var statusInfo = function(e, ui) {
+    })
+			}
 
 
-// 		return "shift now at position " + (ui.item.index() ).toString();
-// 	};
 
-// 	var dropPosition = function (e, ui) {
-// 		return (e.type === "sortreceive") ? " within a new List" : "";
-// 	};
+			var $trash=$(' #sort1  li button ');
 
-// 	$("#status").remove();
-// 	$("<p />", {
-// 		id: "status",
-// 		text: [ statusInfo(e, ui), dropPosition(e, ui) ].join(" "),
-// 		css: { clear: "both" }// 	}).appendTo("body");
-// };
 
 
-// $('#con1,#con2,#con3,#con4,#con5,#con6').sortable({
-// 	connectWith:' .sortConn',
 
-// 	containment: '#body',
-// 	helper:'clone',
-// 	revert: true,
-// 	beforeStop: getPosition,
-// 	receive: getPosition,
+			$( $trash ).droppable({
+				cancel: "a.ui-icon",
+      revert: "invalid", // when not dropped, the item will revert back to its initial position
+      containment: "document",
+      helper: "clone",
+      cursor: "move",
+      appendTo: "body",
+      refreshPositions: true,
+      drop: function (event, ui) {
+      	var drag_id = $(ui.draggable).attr("id");
+      	var targetElem = $(this).attr("id");
+      	deleteMe = true;            
+      	$(this)
+      	.addClass("ui-state-highlight")
+      	.find("p")
+      	.html("Dropped! inside " + targetElem);
 
-// 	helper: function(e, row) {
-//       // From http://www.paulund.co.uk/fixed-width-sortable-tables. 
-//       // Sets the width of each cell to be its original width.
-//       // This reverts the default behaviour of the row collapsing into a narrower stub when being dragged.
-//       row.children().each(function() {
-//       	$(this).width($(this).width());
+                $(ui.helper).remove(); //destroy clone
+                $(ui.draggable).remove(); //remove from list    
+            },    
+            over:function(event,ui){
+console.log($(this));
+}
 
-//       });
-//       return row;
-//   },
+});
 
-//   start: function(e, ui) {
-//   	ui.item.startPos = ui.item.index(0);
-//   	var sort = $(this).sortable('instance');
-//   	console.log(sort)
-// //         var c=$(this).find('td').attr('id');
 
-// // console.log(c)
 
 
-//        //console.log(c.eq(0).text());
 
-//         	// var r=$(this).parents('table ').children('thead').find('th').attr('id','shift')
 
-//         	// console.log(r.eq(1).text());
 
 
 
-//         	$('#info').remove();
-//         	$("<p />", {
-//         		id: "info",
-//         		html: "Day <b>" +  ui.item.html()  + "</b> is Active Currently",
-//         		css: {
-//         			clear:"both"
-//         		}
-//         	}).appendTo("body");
 
+		});
 
-//         },
 
 
 
-//         update: function(event, ui) {
 
 
-//  //    var c=$(this).find('td').attr('id',"shift");
 
 
-// 	// console.log(c.eq(0).text());
 
 
-// 	console.log("Start position: " + ui.item.startPos);
-// 	console.log("New position: " + ui.item.index());
 
 
 
-// },
-
-// }).disableSelection();
-
-
-// var y=document.querySelectorAll('.span');
-
-
-
-// $(y).each(function(e){
-
-// if($(this).text().length===0)
-// {
-// 	var Btn=document.createElement('button');
-// 		Btn.className='btn btn-outline-dark btn-sm float-right ';
-// 		Btn.appendChild(document.createTextNode('+'));
-
-// 	$(this).on('mouseover',function(){
-// console.log('hovered');
-// $(this).append(Btn);
-// })
-
-
-
-// }
-
-
-
-// else {
-// 	return null
-// }
-
-// $(this).on('mouseleave',function(){
-// 	$(this).css({'opacity':'0'})
-// })
-
-
-// })
-
-
-
-
-
-//  $(y).on('click','.btn',function(){
-
-
-//  // alert(' Here we can add shift  ');
-
-//  	$('#mdl').remove();
-//         	$("<input />", {
-//         		id: "mdl",
-//         		class:'form-control',
-//         		placeholder: "Add period",
-//         		type:'text',
-//         		css: {
-//         			clear:"both",
-
-
-//         		}
-//         	}).appendTo("body");
-
-// $('#mdl').on('keydown',function(e){
-	
-// 	console.log('key pressed');
-
-// })
-
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-</script>
+	</script>
 
 
 </body>
