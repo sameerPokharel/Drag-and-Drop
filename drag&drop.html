@@ -8,7 +8,6 @@
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 	<style type="text/css">
-
 		*{
 			margin: 0;
 			padding: 0;
@@ -44,6 +43,7 @@
 
 	</style>
 
+
 </head>
 <body>
 
@@ -77,16 +77,16 @@
 
 						<tr id="con1" class="sortConn" > 
 
-							<td id="row">Sunday</td>  
+							<td id="r1">Sunday</td>  
 
-							<td class="span"><span class="ui-state-default " id="1"></span></td>
+							<td class="span">  <div class="ui-state-default " id="1"></div></td>
 
-							<td class="span"><span class="ui-state-default" id="2"></span></td>
-							<td class="span"><span class="ui-state-default" id="3"></span> </td>
-							<td class="span"><span class="ui-state-default"  id="4"></span></td>
-							<td class="span"><span class="ui-state-default" id="5"></span></td>
-							<td class="span"><span class="ui-state-default" id="6"></span></td>
-							<td class="span"><span class="ui-state-default" id="7"></span></td>
+							<td class="span"><div class="ui-state-default " id="1"></div></td>
+							<td class="span"><div class="ui-state-default " id="1"></div> </td>
+							<td class="span"><div class="ui-state-default " id="1"></div></td>
+							<td class="span"><div class="ui-state-default " id="1"></div></td>
+							<td class="span"><div class="ui-state-default " id="1"></div></td>
+							<td class="span"><div class="ui-state-default " id="1"></div></td>
 
 						</tr>
 
@@ -94,7 +94,7 @@
 
 
 						<tr id="con2" class="sortConn">
-							<td id="row">Monday</td>  
+							<td id="r2">Monday</td>  
 
 
 							<td class="span"><span class="ui-state-default " id="8"></span></td>
@@ -149,6 +149,7 @@
 						</tr>
 
 						<tr  id="con6" class="sortConn">
+
 							<td id="row">Friday</td>  
 
 							<td class="span"><span class="ui-state-default" id="8"></span></td>
@@ -161,7 +162,7 @@
 
 						</tr>
 					</tbody>
-					
+
 
 				</table>
 			</div>
@@ -177,7 +178,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 
 
 	</div>
@@ -209,108 +210,105 @@
 
 			$(  $listItem ).draggable({
 				cancel: "a.ui-icon",
-      revert: "invalid", // when not dropped, the item will revert back to its initial position
-      containment: "document",
-      helper: "clone",
-      cursor: "move",
-      appendTo: "body",
-      refreshPositions: true
+	      revert: "invalid", // when not dropped, the item will revert back to its initial position
+	      containment: "document",
+	      helper: "clone",
+	      cursor: "move",
+	      appendTo: "body",
+	      refreshPositions: true
+	  });
+			$( "#sort1 li" ).selectable();
+			$( "#sort1 li" ).disableSelection();
+
+			var $container=$("#dropdiv table tbody tr td ");
 
 
-  });
+				//console.log($($container))
+				
+				initDroppable($($container  ));
+
+				function initDroppable($elements) {
+					$elements.droppable({
+						activeClass: "ui-state-default",
+						hoverClass: "ui-drop-hover",
+						accept: ":not(.ui-sortable-helper)", 
+						// accept:"#sort1 li",
+
+						over: function (event, ui) {
+							var $this = $(this);
+
+						},
+						drop:function (event, ui) {
+							var $this = $(this);
+		//console.log(ui.position)
+		//console.log($this)
+
+		
+		var $item = ui.helper.clone();
+		$item.draggable({
+			cancel: "a.ui-icon",
+			revert: 'invalid',
+			cursor: "move",
+			appendTo: "body",
+			 // helper:"clone",
+			});
+		$(this).addClass('has-drop').append($item);
+		$(ui.helper).remove() 
 
 
+		var y= $this.closest('  tr  ').children().eq(0).text();
+		console.log(y)
 
-			$( "#sort1" ).selectable();
-			$( "#sort1" ).disableSelection();
+		var l=$(this).index();
 
-
-			initDroppable($("#dropdiv table td  "));
-
-			function initDroppable($elements) {
-				$elements.droppable({
-					activeClass: "ui-state-default",
-					hoverClass: "ui-drop-hover",
-                    accept: ":not(.ui-sortable-helper)", 
-
-                     over: function (event, ui) {
- 	             var $this = $(this);
-console.log($this)
- },
-                   drop:function (event, ui) {
- 	               var $this = $(this);
-                 console.log(ui.position)
-
-
-                        var $item = ui.helper.clone();
-                        $item.draggable({
-                        	cancel: "a.ui-icon",
-                 revert: 'invalid',
-                cursor: "move",
-                revertDuration:0,
-                helper:"clone"
-
-
-            });
-
-
-                        $(this).addClass('has-drop').append($item);
-                    
-
-                    }
-
-   
-
-
-
-
-    })
-			}
-
-
-
-			var $trash=$(' #sort1  li button ');
-
-
-
-
-			$( $trash ).droppable({
-				cancel: "a.ui-icon",
-      revert: "invalid", // when not dropped, the item will revert back to its initial position
-      containment: "document",
-      helper: "clone",
-      cursor: "move",
-      appendTo: "body",
-      refreshPositions: true,
-      drop: function (event, ui) {
-      	var drag_id = $(ui.draggable).attr("id");
-      	var targetElem = $(this).attr("id");
-      	deleteMe = true;            
-      	$(this)
-      	.addClass("ui-state-highlight")
-      	.find("p")
-      	.html("Dropped! inside " + targetElem);
-
-                $(ui.helper).remove(); //destroy clone
-                $(ui.draggable).remove(); //remove from list    
-            },    
-            over:function(event,ui){
-console.log($(this));
-}
-
-});
+		var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
+		console.log(x)
 
 
 
 
 
 
+		
+
+		
+
+	}
+
+})
+				}			
+
+				
+				var $trash=$(' #sort1  li button ');
+				$( $trash ).droppable({
+					cancel: "a.ui-icon",
+	      revert: "invalid", // when not dropped, the item will revert back to its initial position
+	      containment: "document",
+	      helper: "clone",
+	      cursor: "move",
+	      appendTo: "body",
+	      refreshPositions: true,
+	      drop: function (event, ui) {
+	      	var drag_id = $(ui.draggable).attr("id");
+	      	var targetElem = $(this).attr("id");
+	      	deleteMe = true;            
+	      	$(this)
+	      	.addClass("ui-state-highlight")
+	      	.find("p")
+	      	.html("Dropped! inside " + targetElem);
+
+	                $(ui.helper).remove(); //destroy clone
+	                $(ui.draggable).remove(); //remove from list    
+	            },    
+	            over:function(event,ui){
+	            	console.log($(this));
+	            }
+	        });
 
 
+			});
 
-
-		});
-
+		</script>
 
 
 
@@ -319,12 +317,5 @@ console.log($(this));
 
 
 
-
-
-
-
-	</script>
-
-
-</body>
-</html>
+	</body>
+	</html>
