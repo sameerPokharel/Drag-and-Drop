@@ -44,19 +44,19 @@
 		}
 
 
-.table td{
+		.table td{
 
-       
-        margin:2px;
-        
-        
-}
-	.has-drop{
-		/*position: sticky;*/
-		position: static;
-	}
 
-</style>
+			margin:2px;
+
+
+		}
+		.has-drop{
+			/*position: sticky;*/
+			position: static;
+		}
+
+	</style>
 
 
 </head>
@@ -186,13 +186,13 @@
 		<div id="dragList">
 			<div id="origin" class="card" >
 				<ul id="sort1" class="list" >
-					<li id="one" title="one" class="draggable1" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-md">English</button></li>
-					<li id="two" title="two" class="draggable2" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-md">Nepali</button></li>
-					<li id="three" title="three" class="draggable3" draggable="true" style="list-style-type: none;"> Economics</li>
-				
-<li id="three" title="three" class="draggable3" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-md">Account</button></li>
+					<li id="one" title="one" class="draggable1" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-sm">English</button></li>
+					<li id="two" title="two" class="draggable2" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-sm">Nepali</button></li>
+					<li id="three" title="three" class="draggable3" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-sm">Economics</button></li>
 
-					<li><button class="btn btn-lg btn-outline-primary " droppable="true" >Trash</button></li>
+					<li id="three" title="three" class="draggable3" draggable="true" style="list-style-type: none;"><button class="btn btn-outline-danger btn-sm">Account</button></li>
+
+					<li id="trash" title="four" class="draggable4"><button class="btn btn-lg btn-outline-primary btn-md" droppable="true" >Trash</button></li>
 				</ul>
 			</div>
 		</div>
@@ -215,7 +215,7 @@
 	crossorigin="anonymous"></script>
 
 	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
 
 	<script type="text/javascript">
@@ -236,95 +236,77 @@
 	      tolerance:"fit",
 	      opacity:.7,
 	      snapMode: 'inner',
-	      stack: false,
-	         // create: function(){$(this).data('position',$(this).position())},
-	         //   cursorAt:{left:15},
-	         //     start:function(){$(this).stop(true,true)}
+	      // stack: false,
+	     });
 
-	    
-	         
-	  });
+
+
+	 
 			$( "#sort1 li" ).selectable();
 			$( "#sort1 li" ).disableSelection();
 
 			var $container=$("#dropdiv table tbody tr td   ");
-            initDroppable($($container))
-            function initDroppable($elements) {
+			initDroppable($($container))
+			function initDroppable($elements) {
+
+				$elements.droppable({
+					activeClass: "ui-state-default",
+					hoverClass: "ui-drop-hover",
+					accept: ":not(.ui-sortable-helper)",
+
+					over: function (event, ui) {
+
+
+
+					},
+
+
+
+
+					drop:function (event, ui) {
+						var $this = $(this);
+						var $item = ui.helper.clone();
+
+
+
+						$item.draggable({
+							cancel: "a.ui-icon",
+							revert: 'invalid',
+							cursor: "move",
+							appendTo: "body",
+							snap:'.table tr ',
+							snapMode: "inner",
+							snapTolerance:25,
+							tolerance:"intersect",
+	});
+						$this.addClass('has-drop').append($item);
+	      $(ui.helper).remove();
+
 					
-					$elements.droppable({
-						activeClass: "ui-state-default",
-						hoverClass: "ui-drop-hover",
-						accept: ":not(.ui-sortable-helper)", 
-
-
-
-
+						console.log($this.text())
 						
-               over: function (event, ui) {
-				
+						var day= $this.closest('  tr  ').children().eq(0).text();
+						console.log(day)
 
+						var l=$(this).index();
 
-						},
-						drop:function (event, ui) {
-							var $this = $(this);
-		   var $item = ui.helper.clone();
-		  
- // if ($($item)[0].id = ""){
-
-		    $item.draggable({
-			cancel: "a.ui-icon",
-			revert: 'invalid',
-			cursor: "move",
-			appendTo: "body",
-			  snap:'.table tr ',
-			   snapMode: "inner",
-			   snapTolerance:25,
-			tolerance:"intersect",
-			
-			  });
- ui.helper.clone().position({ 
-my: "center",
-at: "center",
-of: $this,
-using: function(pos) {
-$(this).animate(pos, "slow", "linear");
-
-}
-});$(this).addClass('has-drop').append($item);
- $(ui.helper).remove()
-// var drop_el = $(this).offset();
-// var drag_el =ui.helper.offset();
-// var left_end = (drop_el.left + ($(this).width() / 2)) - (drag_el.left + (ui.helper.width() / 2));
-// var top_end = (drop_el.top + ($(this).height() / 2)) - (drag_el.top + (ui.helper.height() / 2));
- // var delmnt= $(this).addClass('has-drop').append($item);
-//       $item.animate({
-// top: '+=' + top_end,
-// left: '+=' + left_end 
-// });                                     
-                                       
- 
-console.log($(this).text())
-		
-		var day= $this.closest('  tr  ').children().eq(0).text();
-		console.log(day)
-
-		var l=$(this).index();
-//console.log(l)
-		var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
-		console.log(x)
+var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
+console.log(x)
 
 
 
 
 },
 
-})
-				}			
 
-				
-				var $trash=$(' #sort1  li button ');
-				$( $trash ).droppable({
-					cancel: "a.ui-icon",
+})
+			}
+
+
+
+			var $trash=$(' #sort1  li button ');
+			$( $trash ).droppable({
+				cancel: "a.ui-icon",
 	      revert: "invalid", // when not dropped, the item will revert back to its initial position
 	      containment: "document",
 	      helper: "clone",
@@ -346,20 +328,23 @@ console.log($(this).text())
 	            },    
 	            over:function(event,ui){
 	            	console.log($(this));
-	            }
+	            },
 	        });
 
 
-			});
-
-		</script>
 
 
 
+		});
+
+	</script>
 
 
 
 
 
-	</body>
-	</html>
+
+
+
+</body>
+</html>
