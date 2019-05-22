@@ -236,17 +236,29 @@
 	      tolerance:"fit",
 	      opacity:.7,
 	      snapMode: 'inner',
+	      snap:'.table tr td ',
+	       create: function(){
+	       	$(this).data('position',$(this).position())
+	       },
 	      // stack: false,
-	     });
+	
+
+
+	  });
 
 
 
-	 
+
 			$( "#sort1 li" ).selectable();
 			$( "#sort1 li" ).disableSelection();
 
-			var $container=$("#dropdiv table tbody tr td   ");
-			initDroppable($($container))
+			var $container=$(" .table tr td  ");
+
+console.log($container)
+			
+
+
+			initDroppable($( $container))
 			function initDroppable($elements) {
 
 				$elements.droppable({
@@ -254,52 +266,107 @@
 					hoverClass: "ui-drop-hover",
 					accept: ":not(.ui-sortable-helper)",
 
-					over: function (event, ui) {
+				over:function(event,ui) {
+  	
+    
+    },
+   
 
 
 
-					},
+
+				drop:function (event, ui) {
+					var $this = $(this);
+					var $item = ui.helper.clone();
+		
+
+ var draggable = ui.draggable;
+        
+        evnt=(event.target.id)
+				console.log(evnt)
+				// console.log($this)	
+
+// if($(this):contains(day)){
+// 	$(this).droppable('disable')
+// 	// console.log('filtered')
+// }
+
+        if($(this).find($(draggable).attr('id')))    
+        {
+            //Always logs as disabling
+            // console.log("Disabling");
+            $(this).droppable('disable');
+        }
+				
+draggable.clone().position({
+            of: $this,
+            my: 'center',
+            at: 'center',
+            using: function (css, calc) {
+                $(this).animate(css, 200, "linear");
+            }
+        });
+
+ // var drop_el = $(this).offset();
+ //      var drag_el = ui.draggable.offset();
+ //      var left_end = (drop_el.left + ($(this).width() / 2)) - (drag_el.left + (ui.draggable.width() / 2));
+ //      var top_end = (drop_el.top + ($(this).height() / 2)) - (drag_el.top + (ui.draggable.height() / 2));
+ //      // $(this).addClass("highlight").find("p");
+ //      ui.helper.animate({
+ //        top: '+=' + top_end,
+ //        left: '+=' + left_end
+ //      });
+				
+// var width = $this.width();
+//           var height = $this.height();
+//           var cntrLeft = (width / 2) - (ui.draggable.width() / 2);
+//           var cntrTop = (height / 2) - (ui.draggable.height() / 2);
+
+//           ui.helper.position.left = cntrLeft;
+//           ui.helper.position.top = cntrTop ;
+
+					$this.addClass('has-drop').append($item)
+					$(ui.helper).remove();
+
+	  
 
 
 
+					$item.draggable({
+						cancel: "a.ui-icon",
+						revert: 'invalid',
+						cursor: "move",
+						appendTo: "body",
+						snap:'.table tr td  ',
+						snapMode: "inner",
+						snapTolerance:30,
+						tolerance:"intersect",
+						zIndex:1,
+					});
 
-					drop:function (event, ui) {
-						var $this = $(this);
-						var $item = ui.helper.clone();
-
-
-
-						$item.draggable({
-							cancel: "a.ui-icon",
-							revert: 'invalid',
-							cursor: "move",
-							appendTo: "body",
-							snap:'.table tr ',
-							snapMode: "inner",
-							snapTolerance:25,
-							tolerance:"intersect",
-	});
-						$this.addClass('has-drop').append($item);
-	      $(ui.helper).remove();
 
 					
-						console.log($this.text())
-						
-						var day= $this.closest('  tr  ').children().eq(0).text();
-						console.log(day)
+					console.log("Subject:"+$this.text())
 
-						var l=$(this).index();
+					var day= $this.closest('  tr  ').children().eq(0).text();
+					console.log("Day:"+day)
 
-var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
-console.log(x)
+					var l=$(this).index();
+
+					var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
+					console.log("Shift:"+x)
+
+// if(l.find('0')){
+	
+// 	$(this).droppable('disable');
+// 	console.log('donot drop')
+// } 
 
 
+				},
 
 
-},
-
-
-})
+			})
 			}
 
 
@@ -315,22 +382,22 @@ console.log(x)
 	      refreshPositions: true,
 
 	      drop: function (event, ui) {
-	      	var drag_id = $(ui.draggable).attr("id");
+	      	var drag_id = $(ui.helper).attr("id");
 	      	var targetElem = $(this).attr("id");
 	      	deleteMe = true;            
-	      	$(this)
-	      	.addClass("ui-state-highlight")
-	      	.find("p")
-	      	.html("Dropped! inside " + targetElem);
-
-	                $(ui.helper).remove(); //destroy clone
-	                $(ui.draggable).remove(); //remove from list    
+	      	// $(this)
+	      	// .addClass("ui-state-highlight")
+	      	// .find("p")
+	      	// .html("Dropped! inside " + targetElem);
+  $(ui.helper).removeClass();
+	                $(ui.helper).clone().remove(); //destroy clone
+	                // $(ui.draggable).remove(); //remove from list  
+	                console.log("Removed:"+$(ui.helper).text())  
 	            },    
 	            over:function(event,ui){
 	            	console.log($(this));
 	            },
 	        });
-
 
 
 
