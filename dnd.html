@@ -1,58 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Drag & Drop js</title>
-	
+	<title>Drag and Drop</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-	<style type="text/css">
-		/**{
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-
-
-
-
-
-		.card{
-			height: 340px;
-			width: 232px;
-			margin-left: 20px;
-			margin-top: 50px
-
-		}
-		#dragList #sort1 li{
-			list-style-type: none;
-			margin-top: 10px;
-
-		}
-
 	
-
-
-		#right{
-			float: right;
-			margin-right: 20px;
-		}
-
-
-		.table td{
-
-
-			margin:2px;
-
-
-		}
-		.has-drop{
-			/*position: sticky;*/
-			/*position: static;*/
-		/*}*/
-
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<style type="text/css">
 	* {
   margin: 0;
   padding: 0;
@@ -60,10 +14,12 @@
 }
 
 .card {
-  height: 340px;
+  height: 320px;
   width: 232px;
-  margin-left: 5px;
-  margin-top: 50px;
+  margin-left: -40px;
+  margin-top: 20px;
+  position: relative;
+
 }
 
 #sort-1 {
@@ -76,13 +32,13 @@
   margin-top: 10px;
 }
 
-/*.list {
+.list {
   margin-left: 5px;
-}*/
+}
 
 #right {
   float: right;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .drag-card {
@@ -105,10 +61,8 @@
 
 </head>
 <body>
-
-	<div class="containerf" >
-
-
+	<div class="container">
+		
 		<div id="right">
 			<div id="dropdiv">
 				<table border="3 " class="table">
@@ -189,30 +143,24 @@
 				</table>
 			</div>
 		</div>
-
 		
 		<div id="drag-list">
 			<div id="origin" class="card">
 				<ul id="sort-1" class="list">
-					<li id="one" style="list-style: none;">English</li>
-					<li id="two" style="list-style: none;">Nepali</li>
-					<li id="three" style="list-style: none;">Economics</li>
+					<li id="one">English</li>
+					<li id="two">Nepali</li>
+					<li id="three">Economics</li>
 				</ul>
 				<button>Trash</button>
 			</div>
 		</div>
 	</div>
 
-	</div>
 
 
 
 
 
-
-
-
-	<!-- s<script src="https://cdnjs.cloudflare.com/ajax/libs/draggable/1.0.0-beta.8/draggable.js"></script> -->
 	<script
 	src="https://code.jquery.com/jquery-3.4.0.min.js"
 	integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
@@ -220,113 +168,84 @@
 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-
-
 	<script type="text/javascript">
 		$(document).ready(function(){
-			console.log('ready');
-
-			var $listItem=$('#sort-1 li');
-
-
-
-			$(  $listItem ).draggable({
-				cancel: "a.ui-icon",
-	      revert: "invalid", // when not dropped, the item will revert back to its initial position
-	      // containment: "document",
-	      helper: "clone",
-	      cursor: "move",
-	      appendTo: "body",
-	      tolerance:"fit",
-	      opacity:.7,
-	      snapMode: 'inner',
-	      snap:'.table tr td ',
-	     refreshPositions: true
-
-
-	  });
-
-
-
-
-			$( "#sort1 li" ).selectable();
-			$( "#sort1 li" ).disableSelection();
-
-			var $container=$(" #dropdiv .drop  ");
-
-console.log($container)
-			
-
-
-			initDroppable($( $container))
-			function initDroppable($elements) {
-
-				$elements.droppable({
-					activeClass: "ui-state-default",
-					hoverClass: "ui-drop-hover",
-					accept: ":not(.ui-sortable-helper)",
-
-				over:function(event,ui) {
-  	
-    
-    },
-   
-
-
-
-
-				drop:function (event, ui) {
-					var $this = $(this);
-					var $item = ui.helper.clone();
-		
-
- var draggable = ui.draggable;
-        
-        evnt=(event.target.id)
-				console.log(evnt)
-		
-
-        if($(this).find($(draggable).attr('id')))    
-        {
-            //Always logs as disabling
-            // console.log("Disabling");
-            $(this).droppable('disable');
+			console.log('ready')
+			$(function() {
+  function makeDrag(el, clone) {
+    if (clone == undefined) {
+      clone = false;
+    }
+    var $d = $(el).draggable({
+      cancel: "a.ui-icon",
+      revert: "invalid",
+      containment: ".container",
+      helper: function(e) {
+        if (clone) {
+          var cnt = $(e.target).text();
+          
+// console.log(cnt)
+          return $("<div>", {
+            class: "drag-card"
+          }).html(cnt);
         }
-				
-draggable.clone().position({
-            of: $this,
-            my: 'center',
-            at: 'center',
-            using: function (css, calc) {
-                $(this).animate(css, 200, "linear");
-            }
-        });
+       
 
 
+        return $(e.target);
+        // console.log(cnt)
+      },
+      cursor: "move",
+      appendTo: "body",
+      refreshPositions: true
+    });
+    return $d;
+  }
+  var $listItem = $('#sort-1 li');
+  makeDrag($listItem, true);
+  $("#sort-1").selectable();
+  $("#sort-1").disableSelection();
+  var $dropItems = $("#dropdiv .drop");
+  initDroppable($dropItems);
 
-					$this.addClass('has-drop').append($item)
-					$(ui.helper).remove();
+  function initDroppable($elements) {
+    $elements.droppable({
+      classes: {
+        "ui-droppable-hover": "ui-state-hover"
+      },
+      accept: ":not(.ui-sortable-helper)",
+     
+// out:function(event,ui){
+// var $this = $(this);
+//  if ($(this).find(ui.draggable.attr('id'))) {
+//         	$this.droppable('disable')
+
+        	
+//         } 
+// $this.droppable('enable')
+// },
 
 
+      drop: function(event, ui) {
+        var $this = $(this);
+       $this.droppable('enable')
 
+        var $item = $("<div>", {
+            class: "drop-card"
+          })
+          .html(ui.helper.text());
+        $("span", $this).append($item);
+        makeDrag($item);
+        ui.helper.remove();
+   
+//    if( ui.draggable.data('droppedin',$(this))){
+//         $(this).droppable('disable');
+// }else{
+// 	  $(this).droppable('enable');
+// }
 
-					$item.draggable({
-						cancel: "a.ui-icon",
-						revert: 'invalid',
-						cursor: "move",
-						appendTo: "body",
-						snap:'.table tr td  ',
-						snapMode: "inner",
-						snapTolerance:30,
-						tolerance:"intersect",
-						zIndex:1,
-					});
-
-
-					
-					console.log("Subject:"+$this.text())
-
-					var day= $this.closest('  tr  ').children().eq(0).text();
+console.log($item.text())
+   var day= $this.closest('  tr  ').children().eq(0).text();
 					console.log("Day:"+day)
 
 					var l=$(this).index();
@@ -334,65 +253,41 @@ draggable.clone().position({
 					var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
 					console.log("Shift:"+x)
 
+      }
+    })
+  }
+  var $trash = $('#drag-list button');
+  $trash.button({
+      icon: "ui-icon-trash"
+    })
+    .click(function(e) {
+      e.preventDefault();
+      var retval = confirm("Are you sure you want to empty the trash?");
+      if (retval) {
+        // Empty Trash
+        $trash.removeClass("ui-state-highlight");
+      }
+    })
+    .droppable({
+      drop: function(event, ui) {
+        var drag_id = $(ui.draggable).attr("id");
+        var targetElem = $(this).attr("id");
+        deleteMe = true;
+        $(this)
+          .addClass("ui-state-highlight")
+          .find("p")
+          .html("Dropped! inside " + targetElem);
+        ui.helper.remove();
+        ui.draggable.remove();
 
+console.log("Remove:"+$(ui.draggable).text())
+ 
 
-
-				},
-//    out: function (event, ui) {
-//         $(ui.draggable).fadeOut(1000, function () {
-//             $(this).clone().remove();
-//         });
-// },
-			})
-			}
-
-
-
-			var $trash=$(' #origin   button ');
-			$( $trash ).droppable({
-				cancel: "a.ui-icon",
-	      revert: "invalid", // when not dropped, the item will revert back to its initial position
-	      containment: "document",
-	      helper: "clone",
-	      cursor: "move",
-	      appendTo: "body",
-	      refreshPositions: true,
-
-	      drop: function (event, ui) {
-	      	var drag_id = $(ui.helper).attr("id");
-	      	var targetElem = $(this).attr("id");
-	      	deleteMe = true;            
-	      	// $(this)
-	      	// .addClass("ui-state-highlight")
-	      	// .find("p")
-	      	// .html("Dropped! inside " + targetElem);
-  $(ui.helper).clone().removeAttr('id');
-	                
-$(ui.helper).clone().removeClass();
-	                $(ui.helper).clone().detach().remove(); 
-
-	                //destroy clone
-	                // $(ui.draggable).remove(); //remove from list  
-	                console.log("Removed:"+$(ui.helper).text())  
-	            },    
-	            over:function(event,ui){
-	            	console.log($(this));
-	            },
-	        });
-
-
-
+      }
+    });
+});
 
 		});
-
 	</script>
-
-
-
-
-
-
-
-
 </body>
 </html>
