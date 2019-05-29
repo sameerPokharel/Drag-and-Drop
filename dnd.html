@@ -2,23 +2,34 @@
 <html>
 <head>
 	<title>Drag and Drop</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
-	
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-<style type="text/css">
-	* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+.social-part .fa{
+    padding-right:20px;
+}
+.navbar ul li a{
+    margin-right: 20px;
+}
+
+.table{
+	position: sticky;
 }
 
 .card {
-  height: 320px;
+  height: 340px;
   width: 232px;
-  margin-left: -40px;
-  margin-top: 20px;
-  position: relative;
+  margin-left: 20px;
+  /*margin-top: 10px;*/
+  position: sticky;
 
 }
 
@@ -29,16 +40,21 @@
 }
 
 #sort-1 li {
-  margin-top: 10px;
-}
+  /*margin-top: 10px;*/
+  text-align: center;
+  
+  list-style: none;
 
+}
+/*
 .list {
   margin-left: 5px;
-}
+}*/
 
 #right {
   float: right;
-  margin-right: 10px;
+  margin-right: 20px;
+  margin-top: 40px;
 }
 
 .drag-card {
@@ -47,7 +63,6 @@
   border: 1px solid #222;
   border-radius: 3px;
   padding: 0.2em;
-  
 }
 
 .drop-card {
@@ -56,17 +71,74 @@
   width: 98%;
   text-align: center;
 }
+.containerf{
+	height: 90vh;
+	width: 100vw;
+	/*margin-top: auto;*/
+      background: linear-gradient(to right, #200122, #6f0000);
+	}
 
-</style>
+	</style>
 
 </head>
 <body>
-	<div class="container">
-		
+ <div>
+
+  <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Our Service
+            </a>
+            <div class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="#">service2</a>
+              <a class="dropdown-item" href="#">service 2</a>
+              <a class="dropdown-item" href="#">service 3</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+       
+           <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Courses
+            </a>
+            <div class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="#">BEX</a>
+              <a class="dropdown-item" href="#">BCT</a>
+              <a class="dropdown-item" href="#">BCA</a>
+              <a class="dropdown-item" href="#">BBA</a>
+              <a class="dropdown-item" href="#">BIM</a>
+              <a class="dropdown-item" href="#">BSC CSIT</a>
+            </div>
+          </li>
+          </ul>
+          <div class="social-part">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </div>
+        </div>
+      </nav>
+</div>
+		<div class="containerf">
 		<div id="right">
+			
 			<div id="dropdiv">
 				<table border="3 " class="table">
-					<thead>
+					<thead style="color: white">
 						<tr>
 							<th>Day/shift</th>
 							<th id="shift1">7:15-8:45</th>
@@ -78,7 +150,7 @@
 							<th id="shift7">1:15-14:00</th>
 						</tr>
 					</thead>
-					<tbody id="body">
+					<tbody id="body" style="color: white">
 						<tr id="con1" class="sortConn">
 							<td id="row">Sunday</td>
 							<td class="span drop"><span class="ui-state-default " id="1"></span></td>
@@ -142,23 +214,32 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
+</div>		
 		
 		<div id="drag-list">
 			<div id="origin" class="card">
 				<ul id="sort-1" class="list">
-					<li id="one">English</li>
+					<li id="one" style="list-style: none">English</li>
 					<li id="two">Nepali</li>
+					<li id="three">Account </li>
+					<li id="three"> Mathmatics </li>
 					<li id="three">Economics</li>
 				</ul>
-				<button>Trash</button>
+				<button class="btn btn-outline-danger btn-lg" >Trash</button>
 			</div>
 		</div>
+	
 	</div>
 
 
 
 
+
+<!-- Popper JS -->
+
+
+<!-- Latest compiled JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
 
 
 	<script
@@ -168,125 +249,172 @@
 
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+	
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+
+
+
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			console.log('ready')
-			$(function() {
-  function makeDrag(el, clone) {
-    if (clone == undefined) {
-      clone = false;
-    }
-    var $d = $(el).draggable({
-      cancel: "a.ui-icon",
-      revert: "invalid",
-      containment: ".container",
-      helper: function(e) {
-        if (clone) {
-          var cnt = $(e.target).text();
-          
-// console.log(cnt)
-          return $("<div>", {
-            class: "drag-card"
-          }).html(cnt);
-        }
-       
-
-
-        return $(e.target);
-        // console.log(cnt)
-      },
-      cursor: "move",
-      appendTo: "body",
-      refreshPositions: true
+$('.navbar-light .dmenu').hover(function () {
+        $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
+    }, function () {
+        $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
     });
-    return $d;
-  }
-  var $listItem = $('#sort-1 li');
-  makeDrag($listItem, true);
-  $("#sort-1").selectable();
-  $("#sort-1").disableSelection();
-  var $dropItems = $("#dropdiv .drop");
-  initDroppable($dropItems);
+// $('#mgmt h3')
+// 	.animate({
+//     width: '45%',
+//     opacity: 0.4,
+//     marginRight: "0.6in",
+//     fontSize: "1em",
+//     borderWidth: "10px"
+//   }, 1500 );
+	
 
-  function initDroppable($elements) {
-    $elements.droppable({
-      classes: {
-        "ui-droppable-hover": "ui-state-hover"
-      },
-      accept: ":not(.ui-sortable-helper)",
-     
-// out:function(event,ui){
-// var $this = $(this);
-//  if ($(this).find(ui.draggable.attr('id'))) {
-//         	$this.droppable('disable')
-
-        	
-//         } 
-// $this.droppable('enable')
-// },
+	
 
 
-      drop: function(event, ui) {
-        var $this = $(this);
-       $this.droppable('enable')
+			$(function() {
+				function makeDrag(el, clone) {
+					if (clone == undefined) {
+						clone = false;
+					}
+					var $d = $(el).draggable({
+						cancel: "a.ui-icon",
+						revert: "invalid",
+						containment: ".container",
 
-        var $item = $("<div>", {
-            class: "drop-card"
-          })
-          .html(ui.helper.text());
-        $("span", $this).append($item);
-        makeDrag($item);
-        ui.helper.remove();
-   
-//    if( ui.draggable.data('droppedin',$(this))){
-//         $(this).droppable('disable');
-// }else{
-// 	  $(this).droppable('enable');
-// }
+						helper: function(e) {
 
-console.log($item.text())
-   var day= $this.closest('  tr  ').children().eq(0).text();
-					console.log("Day:"+day)
 
-					var l=$(this).index();
 
-					var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
-					console.log("Shift:"+x)
+							if (clone) {
+								var cnt = $(e.target).text();
 
-      }
-    })
-  }
-  var $trash = $('#drag-list button');
-  $trash.button({
-      icon: "ui-icon-trash"
-    })
-    .click(function(e) {
-      e.preventDefault();
-      var retval = confirm("Are you sure you want to empty the trash?");
-      if (retval) {
+// console.log(cnt)
+return $("<div>", {
+	class: "drag-card"
+}).html(cnt);
+}
+
+
+
+return $(e.target);
+        // console.log(cnt)
+    },
+    cursor: "move",
+    appendTo: "body",
+    refreshPositions: true
+});
+					return $d;
+				}
+
+
+
+
+				var $listItem = $('#sort-1 li');
+				makeDrag($listItem, true);
+				$("#sort-1").selectable();
+				$("#sort-1").disableSelection();
+				var $dropItems = $("#dropdiv .drop");
+				initDroppable($dropItems);
+
+				function initDroppable($elements) {
+					$elements.droppable({
+						classes: {
+							"ui-droppable-hover": "ui-state-hover"
+						},
+						accept: ":not(.ui-sortable-helper)",
+
+
+
+
+						drop: function(event, ui) {
+							var $this = $(this);
+							var draggable=ui.helper;
+
+							var $item = $("<div>", {
+								class: "drop-card"
+							})
+							.html(ui.helper.text());
+							$("span", $this).append($item);
+							
+							
+
+
+							$this.droppable("disable");
+							
+
+							makeDrag($item);
+							$item.on("dragstart", function(e, ui){
+								$item.find(".drop").droppable("enable");
+							});
+
+							ui.helper.remove();
+
+				// if ($this.find(ui.draggable.attr('id'))) {
+				// 	$this.droppable('disable')
+				// }
+
+
+						
+
+
+							console.log($item.text())
+							var day= $this.closest('  tr  ').children().eq(0).text();
+							console.log("Day:"+day)
+
+							var l=$(this).index();
+
+							var x= $this.closest('table').find('thead th ').siblings().contents().eq(l).text()
+							console.log("Shift:"+x)
+
+						}
+					})
+				}
+				var $trash = $('#drag-list button');
+				$trash.button({
+					icon: "ui-icon-trash"
+				})
+				.click(function(e) {
+					e.preventDefault();
+					var retval = confirm("Are you sure you want to empty the trash?");
+					if (retval) {
         // Empty Trash
         $trash.removeClass("ui-state-highlight");
-      }
-    })
-    .droppable({
-      drop: function(event, ui) {
-        var drag_id = $(ui.draggable).attr("id");
-        var targetElem = $(this).attr("id");
-        deleteMe = true;
-        $(this)
-          .addClass("ui-state-highlight")
-          .find("p")
-          .html("Dropped! inside " + targetElem);
-        ui.helper.remove();
-        ui.draggable.remove();
+    }
+})
+				.droppable({
+					drop: function(event, ui) {
+						var drag_id = $(ui.draggable).attr("id");
+						var targetElem = $(this).attr("id");
+						deleteMe = true;
+						$(this)
+						.addClass("ui-state-highlight")
+						.find("p")
+						.html("Dropped! inside " + targetElem);
+						ui.helper.remove();
+						ui.draggable.remove();
 
-console.log("Remove:"+$(ui.draggable).text())
- 
+						console.log("Remove:"+$(ui.draggable).text())
 
-      }
-    });
-});
 
+					}
+				});
+			});
+	  
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 		});
 	</script>
 </body>
